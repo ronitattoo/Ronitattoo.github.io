@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RONI TATTOO — Portfolio</title>
+<meta name="description" content="Roni Tattoo — Professional Tattoo Artist specializing in realistic black & color tattoos. Family, portrait & cover-up work. Athens & Albania.">
+<meta name="theme-color" content="#000000">
+<link rel="preload" as="image" href="01-portrait-arm.jpg">
+<style>
+  :root{
+    --bg:#0b0b0d;--card:#131318;--ink:#ffffff;--muted:#a8acb3;
+    --accent:#e6c46a;--accent2:#f5e7a1;--accent3:#bd8f2d;
+    --shadow:0 10px 30px rgba(0,0,0,.55);--radius:16px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:auto;padding:20px}
+  header{position:relative;padding:28px 22px 22px;background:linear-gradient(180deg,#111115 0%, #0c0c10 100%);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow);}
+  /* === PREMIUM 3D GOLD TITLE === */
+  .brand {
+    position: relative;display:inline-block;
+    font-size: clamp(40px, 7vw, 86px);font-weight:900;letter-spacing:.09em;text-transform:uppercase;
+    background:linear-gradient(180deg,#fff9e6 0%,#f7e6a1 18%,#e6c46a 40%,#c99b2f 55%,#9d7420 70%,#f5e7a1 88%,#8a6720 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 1px 0 rgba(255,255,255,.45)) drop-shadow(0 2px 2px rgba(0,0,0,.35)) drop-shadow(0 12px 24px rgba(0,0,0,.55));
+    text-shadow:0 -1px 0 rgba(255,255,255,.35), 0 1px 0 rgba(0,0,0,.35), 0 2px 0 rgba(0,0,0,.25);
+  }
+  .brand::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 70% 40%,rgba(255,255,255,.65) 0%,rgba(255,255,255,0) 35%), radial-gradient(100% 60% at 30% 70%,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 40%);-webkit-mask:linear-gradient(#000,#000);mask:linear-gradient(#000,#000);pointer-events:none;mix-blend-mode:screen;opacity:.65}
+  .brand .shine{position:absolute;top:0;left:-20%;width:20%;height:100%;background:linear-gradient(75deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.9) 50%,rgba(255,255,255,0) 100%);transform:skewX(-20deg);filter:blur(2px);animation:sweep 3.2s cubic-bezier(.25,.1,.25,1) infinite;opacity:.6;pointer-events:none}
+  @keyframes sweep{0%{left:-25%}55%{left:110%}100%{left:110%}}
+  .subtitle{margin-top:6px;color:var(--muted);font-size:clamp(14px,1.6vw,16px)}
+  .pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .pill{background:#111218;border:1px solid rgba(255,255,255,.06);padding:8px 12px;border-radius:999px;font-size:13px;display:inline-flex;gap:8px;align-items:center}
+  .row{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
+  @media (min-width:760px){.row{grid-template-columns:auto 1fr}}
+  .avatar{width:96px;height:96px;border-radius:50%;border:3px solid var(--accent);background:#222 url('01-portrait-arm.jpg') center/cover no-repeat;}
+  .bio{background:#0f1015;border:1px solid rgba(255,255,255,.06);padding:14px;border-radius:12px;color:#d6d8de;line-height:1.45}
+  .socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:#14151c;border:1px solid rgba(255,255,255,.06);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;box-shadow:0 4px 14px rgba(0,0,0,.35);font-weight:600;font-size:14px}
+  .btn:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.18);box-shadow:0 10px 24px rgba(0,0,0,.5)}
+  .btn svg{width:18px;height:18px}
+  .section{margin-top:28px}
+  .section h2{margin:0 0 14px;font-size:22px;letter-spacing:.04em}
+  .gallery{display:grid;grid-template-columns:repeat(1,1fr);gap:14px}
+  @media (min-width:520px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:900px){.gallery{grid-template-columns:repeat(4,1fr)}}
+  .card{position:relative;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid rgba(255,255,255,.06);aspect-ratio:3/4;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;box-shadow:var(--shadow);cursor:pointer}
+  .card:hover{transform:translateY(-6px) scale(1.03);border-color:rgba(255,255,255,.18);box-shadow:0 20px 40px rgba(0,0,0,.6)}
+  .card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease;filter:contrast(1.05)}
+  .card:hover img{transform:scale(1.06)}
+  .tag{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);color:#fff;border:1px solid rgba(255,255,255,.18);padding:6px 10px;border-radius:999px;font-size:12px}
+  .wa{position:fixed;right:20px;bottom:20px;z-index:20;padding:14px 16px;border-radius:999px;font-weight:700;background:linear-gradient(120deg,#24d366,#128c7e);color:#fff;box-shadow:0 12px 32px rgba(0,0,0,.5)}
+  .footer{margin:40px 0 10px;color:var(--muted);font-size:13px;text-align:center}
+  .btn .lift{transition:transform .2s ease} .btn:hover .lift{transform:translateY(-2px)}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="row">
+        <div style="display:flex;gap:16px;align-items:center">
+          <div class="avatar" aria-hidden="true"></div>
+          <div>
+            <div class="brand">Roni Tattoo<span class="shine" aria-hidden="true"></span></div>
+            <div class="subtitle">Professional Tattoo Artist — Realistic black &amp; color work</div>
+            <div class="pills">
+              <div class="pill">🎯 Family • Portrait • Cover-up</div>
+              <div class="pill">📍 Athens</div>
+              <div class="pill">🇦🇱 Albania</div>
+              <div class="pill">🔗 @ronitattoo_artist</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="socials" style="margin-top:16px">
+        <a class="btn" href="https://instagram.com/ronitattoo_artist" target="_blank" rel="noopener">
+          <svg class="lift" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.51 5.51 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.2a1.2 1.2 0 1 1-1.2 1.2A1.2 1.2 0 0 1 18 6.2z"/></svg>
+          Instagram
+        </a>
+        <a class="btn" href="https://www.tiktok.com/@ronitattoo_artist" target="_blank" rel="noopener">
+          <svg class="lift" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.6 1.7 2 3 3.7 3.5v3.1c-1.5-.1-3-.6-4.3-1.4v6.7a6.9 6.9 0 1 1-6.9-6.9c.4 0 .8 0 1.2.1v3.2c-.4-.1-.8-.1-1.2-.1a3.7 3.7 0 1 0 3.7 3.7V3h3.8z"/></svg>
+          TikTok
+        </a>
+        <a class="btn" href="https://facebook.com/roni.lami" target="_blank" rel="noopener">
+          <svg class="lift" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 22v-8h3l.6-4H13V7.5c0-1.1.4-1.8 2-1.8h1.7V2.2C16.3 2.1 15.1 2 14 2c-3 0-5 1.8-5 5v3H6v4h3v8h4z"/></svg>
+          Facebook
+        </a>
+        <a class="btn" href="https://www.youtube.com/@Ronitattoo_artist" target="_blank" rel="noopener">
+          <svg class="lift" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.5c0-1.7-1.3-3-3-3H4c-1.7 0-3 1.3-3 3v9c0 1.7 1.3 3 3 3h16c1.7 0 3-1.3 3-3v-9zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+          YouTube
+        </a>
+      </div>
+
+      <div class="bio" style="margin-top:16px">Professional Tattoo Artist specializing in <em>realistic black &amp; color tattoos</em>. Custom designs — family, portrait &amp; cover-up work.</div>
+    </header>
+
+    <section class="section">
+      <h2>Selected Work</h2>
+      <div class="gallery">
+        <a class="card" href="01-portrait-arm.jpg" target="_blank" rel="noopener">
+          <img loading="lazy" alt="Roni Tattoo — #portrait" src="01-portrait-arm.jpg">
+          <span class="tag">#portrait</span>
+        </a>
+        <a class="card" href="02-backpiece.jpg" target="_blank" rel="noopener">
+          <img loading="lazy" alt="Roni Tattoo — #backpiece" src="02-backpiece.jpg">
+          <span class="tag">#backpiece</span>
+        </a>
+        <a class="card" href="03-roses-clock.jpg" target="_blank" rel="noopener">
+          <img loading="lazy" alt="Roni Tattoo — #blackwork" src="03-roses-clock.jpg">
+          <span class="tag">#blackwork</span>
+        </a>
+        <a class="card" href="04-action-scene.jpg" target="_blank" rel="noopener">
+          <img loading="lazy" alt="Roni Tattoo — #concept" src="04-action-scene.jpg">
+          <span class="tag">#concept</span>
+        </a>
+        <a class="card" href="05-scarface.jpg" target="_blank" rel="noopener">
+          <img loading="lazy" alt="Roni Tattoo — #portrait" src="05-scarface.jpg">
+          <span class="tag">#portrait</span>
+        </a>
+        <a class="card" href="06-bronx-tale.jpg" target="_blank" rel="noopener">
+          <img loading="lazy" alt="Roni Tattoo — #details" src="06-bronx-tale.jpg">
+          <span class="tag">#details</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Kontakto</h2>
+      <div class="bio">
+        Për prenotime: dërgo mesazh në Instagram ose WhatsApp.<br>
+        Email: <a href="mailto:booking@ronitattoo.com">booking@ronitattoo.com</a>
+      </div>
+    </section>
+
+    <div class="footer">© <span id="y"></span> Roni Tattoo • Ready for GitHub Pages</div>
+  </div>
+
+  <a class="wa" href="https://wa.me/355?text=Pershendetje%20Roni,%20dua%20te%20rezervoj%20per%20tattoo." target="_blank" rel="noopener">WhatsApp</a>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(c=>{
+    c.addEventListener('touchstart', ()=> c.style.transform='translateY(-6px) scale(1.03)', {passive:true});
+    c.addEventListener('touchend', ()=> c.style.transform='', {passive:true});
+  });
+</script>
+</body>
+</html>
