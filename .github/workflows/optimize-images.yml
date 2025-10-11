@@ -1,0 +1,86 @@
+name: Optimize images (webp + avif)
+
+on:
+  push:
+    paths:
+      - "**/*.jpg"
+      - "**/*.jpeg"
+      - "**/*.png"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: |
+          npm init -y
+          npm install sharp@0.33.4 fast-glob@3.3.2
+
+      - name: Convert to WEBP & AVIF (max width 1600, quality tuned)
+        run: |
+          mkdir -p scripts
+          cat > scripts/convert-images.js <<'EOF'
+          const sharp = require('sharp');
+          const fg = require('fast-glob');
+          const fs = require('fs').promises;
+          const path = require('path');
+
+          const MAX_W = 1600;
+          const QUALITY_WEBP = 82;
+          const QUALITY_AVIF = 55; // avif është shumë efikas
+
+          function outPath(file, ext) {
+            const { dir, name } = path.parse(file);
+            return path.join(dir, `${name}.${ext}`);
+          }
+
+          (async () => {
+            const files = await fg(['**/*.{jpg,jpeg,png}'], {
+              dot: false,
+              ignore: ['node_modules/**', '.git/**', '**/.github/**']
+            });
+
+            if (!files.length) {
+              console.log('No images found.');
+              return;
+            }
+            console.log(`Found ${files.length} images…`);
+
+            for (const f of files) {
+              const buf = await fs.readFile(f);
+              const img = sharp(buf);
+              const meta = await img.metadata();
+              const needResize = (meta.width || 0) > MAX_W;
+              const base = needResize ? img.resize({ width: MAX_W }) : img;
+
+              const webpOut = outPath(f, 'webp');
+              await base.webp({ quality: QUALITY_WEBP, effort: 6 }).toFile(webpOut);
+
+              const avifOut = outPath(f, 'avif');
+              await base.avif({ quality: QUALITY_AVIF, effort: 6 }).toFile(avifOut);
+
+              console.log(`✓ ${f} → ${path.basename(webpOut)}, ${path.basename(avifOut)} ${needResize ? '(resized)' : ''}`);
+            }
+          })().catch(err => { console.error(err); process.exit(1); });
+          EOF
+          node scripts/convert-images.js
+
+      - name: Commit optimized images
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "chore: optimize images (webp+avif)"
+          git push
